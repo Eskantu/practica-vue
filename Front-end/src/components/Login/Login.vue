@@ -1,9 +1,9 @@
 <template>
-  <v-layout class="my-10" align-center justify-center>
+  <v-layout class="jumbo" align-center justify-center fluid fill-height>
     <v-flex xs12 sm8 md4>
       <v-card class="elevation-12">
-        <v-toolbar dark color="primary">
-          <v-toolbar-title><h3>Login</h3></v-toolbar-title>
+        <v-toolbar dark color="indigo">
+          <v-toolbar-title><h3>LOGIN</h3></v-toolbar-title>
         </v-toolbar>
         <v-card-text>
           <v-form v-model="valid">
@@ -33,7 +33,9 @@
           >
         </v-card-actions>
       </v-card>
-      <router-link :to="{ name: 'Registro' }">Registro</router-link>
+      <v-btn class="mt-5" color="error" block :to="{ name: 'Registro' }"
+        >Sign in</v-btn
+      >
     </v-flex>
   </v-layout>
 </template>
@@ -55,3 +57,12 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.jumbo {
+  background: linear-gradient(
+    to top right,
+    rgba(47, 71, 41, 0.7),
+    rgba(65, 94, 86, 0.7)
+  );
+}
+</style>
