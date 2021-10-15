@@ -1,9 +1,5 @@
 import StorePrincipal from '../../store/index'
-import Vue from 'vue'
 import axios from 'axios'
-import VueAxios from 'vue-axios'
-axios.defaults.baseURL = "http://localhost:5001/api";
-Vue.use(VueAxios, axios)
 const store = {
     namespaced: true,
     state: { usuario: {}, error: '' },
@@ -17,10 +13,10 @@ const store = {
             console.log(user.state.usuario)
             axios.post('/user', user.state.usuario).then(res => {
                 console.log(res)
-                StorePrincipal.commit('SnackStore/SetSnack', { show: true, text: 'Usuario creado' })
+                StorePrincipal.commit('SnackStore/SetSnack', 'Usuario creado')
             }).catch(e => {
                 console.log(e);
-                StorePrincipal.commit('SnackStore/SetSnack', { show: true, text: 'Error al crear usuario' })
+                StorePrincipal.commit('SnackStore/SetSnack', 'Error al crear usuario')
             })
         },
         ObtenerUsuario(user) {

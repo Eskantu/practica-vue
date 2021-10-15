@@ -9,6 +9,7 @@ const routes = [
     name: "Home",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Home.vue"),
+    // meta: { requiresAuth: true }
   },
   {
     path: "/Login",
@@ -37,5 +38,10 @@ const router = new VueRouter({
   base: process.env.BASE_URL,
   routes,
 });
+
+// router.beforeEach((to, from, next) => {
+//   const rutaAuth = to.matched.some(record => record.meta.requiresAuth)
+
+// })
 
 export default router;
