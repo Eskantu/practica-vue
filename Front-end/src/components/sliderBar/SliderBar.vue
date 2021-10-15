@@ -26,7 +26,30 @@
           <v-list-item-title>{{ item.title }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
+      <v-list-item> </v-list-item>
     </v-list>
+    <template v-slot:append>
+      <div class="pa-2">
+        <v-list dense nav>
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>settings</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>configuracion</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>logout</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>salir</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </div>
+    </template>
   </v-navigation-drawer>
 </template>
 <script>
@@ -36,10 +59,12 @@ export default {
     return {
       items: [
         { title: "Dashboard", icon: "dashboard" },
-        { title: "Photos", icon: "image" },
+        { title: "Users", icon: "account_circle" },
+        { title: "Projects", icon: "folder" },
         { title: "About", icon: "help" },
       ],
     };
   },
 };
 </script>
+
