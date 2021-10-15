@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <Snackbar></Snackbar>
+    <NavigationBar v-if="user"></NavigationBar>
     <v-main>
       <router-view />
     </v-main>
@@ -14,14 +15,21 @@
 
 <script>
 import Snackbar from "./components/Snackbar/Snackbar.vue";
+import NavigationBar from "./components/sliderBar/SliderBar.vue";
 export default {
   name: "App",
-  components: { Snackbar },
+  components: { Snackbar, NavigationBar },
   data() {
     return {
       show: true,
       text: "hola",
     };
+  },
+  computed: {
+    user: function () {
+      console.log(this.$store.state.user);
+      return this.$store.state.user != null;
+    },
   },
 };
 </script>
