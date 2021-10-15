@@ -4,9 +4,17 @@
       <v-col offset-md="2" md="8" class="text-md-center">
         <v-card>
           <v-card-title>
-            <h2>Bienvenido a vue</h2>
+            <h2>Bienvenido a PIoT</h2>
           </v-card-title>
         </v-card>
+        <v-btn :to="{ name: 'New' }" dark color="transparent" class="mt-10">
+          <v-icon color="green">add_circle</v-icon>
+          New project
+        </v-btn>
+        <v-btn dark color="transparent" class="mt-10 ml-5">
+          Search project
+          <v-icon color="green">search</v-icon>
+        </v-btn>
       </v-col>
     </v-row>
   </v-container>
