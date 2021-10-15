@@ -33,7 +33,23 @@ router.get('/user', async (request, response) => {
         const usersList = await User.find()
         return response.json(usersList)
     } catch (error) {
-        return reponse.status(400).json({ mensaje: 'Ocurrio un error', error })
+        return response.status(400).json({ mensaje: 'Ocurrio un error', error })
+    }
+})
+
+router.post('/user/buscar', async (request, response) => {
+    const query = request.body
+    try {
+        console.log(query)
+        const usersList = await User.findOne(query)
+        console.log(usersList)
+        if (usersList == null) {
+            return response.status(400).json({ mensaje: 'Usuario no encontrado' })
+        } else {
+            return response.json(usersList)
+        }
+    } catch (error) {
+        return response.status(400).json({ mensaje: 'Ocurrio un error', error })
     }
 })
 
@@ -78,18 +94,18 @@ router.post("/nota", async (request, response) => {
     }
 })
 
-// router.post("/nota/buscar", async (request, response) => {
-//     const query = { description: new RegExp(request.body.query) }
-//     console.log(query)
-//     try {
-//         const notaDB = await Nota.find(query)
-//         return response.status(200).json(notaDB)
-//     } catch (error) {
-//         return response.status(500).json({
-//             mensaje: 'Ocurrio un error', error
-//         })
-//     }
-// })
+router.post("/nota/buscar", async (request, response) => {
+    const query = request.body
+    console.log(query)
+    try {
+        const notaDB = await Nota.findOne(query)
+        return response.status(200).json(notaDB)
+    } catch (error) {
+        return response.status(500).json({
+            mensaje: 'Ocurrio un error', error
+        })
+    }
+})
 
 router.get("/nota/:id", async (request, response) => {
     const _id = request.params.id
