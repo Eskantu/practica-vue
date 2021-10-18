@@ -3,6 +3,7 @@ import Vuex from "vuex";
 import RegistroStore from "../components/Registro/RegistroStore";
 import LoginStore from '../components/Login/LoginStore'
 import SnackStore from '../components/Snackbar/SnackStore'
+import NewStore from '../views/New/viewStore'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.use(Vuex)
@@ -20,5 +21,5 @@ export default new Vuex.Store({
   },
   actions: {
   },
-  modules: { RegistroStore, SnackStore, LoginStore },
+  modules: { RegistroStore, SnackStore, LoginStore, NewStore },
 });
