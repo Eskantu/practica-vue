@@ -1,5 +1,5 @@
 <template>
-  <v-navigation-drawer permanent expand-on-hover dark app>
+  <v-navigation-drawer class="elevation-3" permanent expand-on-hover dark app>
     <v-list>
       <v-list-item class="px-2">
         <v-list-item-avatar>
@@ -17,7 +17,7 @@
     </v-list>
     <v-divider></v-divider>
     <v-list dense nav>
-      <v-list-item v-for="item in items" :key="item.title" link>
+      <v-list-item :to="item.to" v-for="item in items" :key="item.title" link>
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
         </v-list-item-icon>
@@ -58,9 +58,9 @@ export default {
   data() {
     return {
       items: [
-        { title: "Dashboard", icon: "dashboard" },
-        { title: "Users", icon: "account_circle" },
-        { title: "Projects", icon: "folder" },
+        { title: "Dashboard", icon: "dashboard", to: "/" },
+        { title: "Users", icon: "account_circle", to: "Users" },
+        { title: "Projects", icon: "folder", to: "Projects" },
         { title: "About", icon: "help" },
       ],
     };
