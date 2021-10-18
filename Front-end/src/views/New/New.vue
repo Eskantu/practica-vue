@@ -17,12 +17,14 @@
             <v-card-text>
               <v-form>
                 <v-text-field
+                  :disabled="loading"
                   color="withe"
                   prepend-icon="folder"
                   counter
                   label="Name"
                 ></v-text-field>
                 <v-textarea
+                  :disabled="loading"
                   color="withe"
                   outlined
                   prepend-icon="description"
@@ -30,6 +32,7 @@
                   label="Description"
                 ></v-textarea>
                 <v-combobox
+                  :disabled="loading"
                   color="withe"
                   v-model="chips"
                   :items="items"
@@ -54,7 +57,15 @@
                     </v-chip>
                   </template>
                 </v-combobox>
-                <v-btn dark block color="green">Create</v-btn>
+                <v-btn
+                  :disabled="loading"
+                  :loading="loading"
+                  @click="loading = true"
+                  dark
+                  block
+                  color="green"
+                  >Create</v-btn
+                >
               </v-form>
             </v-card-text>
           </v-card>
@@ -65,6 +76,7 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 export default {
   data: () => ({
     chips: ["Personal", "enterprise", "Learn", "Game"],
@@ -104,9 +116,16 @@ export default {
     selected() {
       this.search = "";
     },
+    loading() {
+      setTimeout(() => {
+        this.loading = false;
+        this.CreateProject();
+      }, 6000);
+    },
   },
 
   methods: {
+    ...mapActions("NewStore", ["CreateProject"]),
     remove(item) {
       this.chips.splice(this.chips.indexOf(item), 1);
       this.chips = [...this.chips];
