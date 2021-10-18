@@ -5,7 +5,7 @@ const router = express.Router();
 
 
 
-
+//#region user
 router.post('/user', async (request, response) => {
     const body = request.body
     console.log(body)
@@ -78,7 +78,7 @@ router.put("/user/:id", async (request, response) => {
 })
 
 
-
+//#endregion
 
 //#region nota
 router.post("/nota", async (request, response) => {
