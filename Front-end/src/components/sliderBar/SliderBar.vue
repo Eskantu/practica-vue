@@ -39,7 +39,7 @@
               <v-list-item-title>configuracion</v-list-item-title>
             </v-list-item-content>
           </v-list-item>
-          <v-list-item link>
+          <v-list-item @click="Salir" link>
             <v-list-item-icon>
               <v-icon>logout</v-icon>
             </v-list-item-icon>
@@ -53,6 +53,7 @@
   </v-navigation-drawer>
 </template>
 <script>
+import router from "../../router/index";
 export default {
   name: "SliderBar",
   data() {
@@ -61,9 +62,15 @@ export default {
         { title: "Dashboard", icon: "dashboard", to: "/" },
         { title: "Users", icon: "account_circle", to: "Users" },
         { title: "Projects", icon: "folder", to: "Projects" },
-        { title: "About", icon: "help" },
+        { title: "About", icon: "help", to: "About" },
       ],
     };
+  },
+  methods: {
+    Salir() {
+      this.$store.state.user = null;
+      router.push({ name: "Login" });
+    },
   },
 };
 </script>
