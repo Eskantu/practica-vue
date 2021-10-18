@@ -13,8 +13,8 @@
           </v-img>
         </v-card-title>
         <v-card-subtitle class="mt-1">
-          <em> {{ item.id }} </em></v-card-subtitle
-        >
+          <em> {{ item.id }} </em>
+        </v-card-subtitle>
         <v-card-text>
           <p>{{ item.description }}</p></v-card-text
         >
