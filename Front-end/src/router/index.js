@@ -15,7 +15,7 @@ const routes = [
     path: "/New",
     name: "New",
     component: () =>
-      import(/* webpackChunkName: "about" */ "../views/New.vue"),
+      import(/* webpackChunkName: "about" */ "../views/New/New.vue"),
     // meta: { requiresAuth: true }
   },
   {
@@ -30,6 +30,14 @@ const routes = [
     component: () =>
       import(
         /* webpackChunkName: "registro" */ "../components/Registro/Registro.vue"
+      ),
+  },
+  {
+    path: "/Projects",
+    name: "Projects",
+    component: () =>
+      import(
+        /* webpackChunkName: "registro" */ "../components/Project/Project.vue"
       ),
   },
   // {
