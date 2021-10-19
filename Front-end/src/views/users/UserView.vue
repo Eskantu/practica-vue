@@ -9,16 +9,26 @@
           class="text-md-center elecation-3"
         >
           <v-card-title>
-            <v-btn class="mr-1" color="success">
-              <!-- <v-icon class="mr-3">add_circle</v-icon> -->
+            <v-btn class="mr-1" dark color="teal">
+              <v-icon class="mr-3">add_circle</v-icon>
               Nuevo</v-btn
             >
-            <v-btn class="mr-1" color="warning">
-              <!-- <v-icon class="mr-3">edit</v-icon> -->
+            <v-btn
+              :disabled="DisabledButtonEditDelete.edit"
+              class="mr-1"
+              dark
+              color="amber"
+            >
+              <v-icon class="mr-3">edit</v-icon>
               Editar</v-btn
             >
-            <v-btn class="" color="error">
-              <!-- <v-icon class="mr-3">delete</v-icon> -->
+            <v-btn
+              :disabled="DisabledButtonEditDelete.delete"
+              class=""
+              dark
+              color="red"
+            >
+              <v-icon class="mr-3">delete</v-icon>
               Eliminar</v-btn
             >
             <v-spacer></v-spacer>
@@ -32,6 +42,7 @@
           </v-card-title>
           <v-card-text>
             <v-data-table
+              v-model="selected"
               dark
               show-select
               item-key="_id"
@@ -40,6 +51,12 @@
               :search="_Search"
               class="elevation-1"
               loading-text="Loading... Please wait"
+              :footer-props="{
+                'items-per-page': 5,
+                'items-per-page-text': 'Registros por pagina',
+                'items-per-page-all-text': 'Todos',
+                'show-current-page': true,
+              }"
             >
               <template v-slot:item.isActive="{ item }">
                 <tr>
@@ -59,6 +76,13 @@
                   </td>
                 </tr>
               </template>
+              <template v-slot:item.created="{ item }">
+                <tr>
+                  <td>
+                    {{ item.created | formatDate }}
+                  </td>
+                </tr>
+              </template>
             </v-data-table>
           </v-card-text>
         </v-card>
@@ -70,6 +94,11 @@
 <script>
 import { mapActions, mapState } from "vuex";
 export default {
+  data() {
+    return {
+      selected: [],
+    };
+  },
   created() {
     this.ObtenerUsuarios();
   },
@@ -86,6 +115,17 @@ export default {
         this.SetSearch(_Search);
       },
     },
+    DisabledButtonEditDelete() {
+      if (this.selected.length == 0) {
+        return { edit: true, delete: true };
+      } else if (this.selected.length == 1) {
+        return { edit: false, delete: false };
+      } else if (this.selected.length > 1) {
+        return { edit: true, delete: false };
+      } else {
+        return { edit: false, delete: true };
+      }
+    },
   },
 };
 </script>
@@ -101,3 +141,4 @@ export default {
   height: 100%;
 }
 </style>
+
