@@ -63,6 +63,7 @@ export default {
         { title: "Users", icon: "account_circle", to: "Users" },
         { title: "Projects", icon: "folder", to: "Projects" },
         { title: "About", icon: "help", to: "About" },
+        { title: "Draw CSS", icon: "format_paint", to: "CSS" },
       ],
     };
   },
