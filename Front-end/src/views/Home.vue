@@ -2,8 +2,9 @@
   <v-container class="jumbotron-eskantu" fluid fill-height>
     <v-row align="center">
       <v-col offset-md="2" md="8" class="text-md-center">
+        <Search v-on:CloseDialog="Close" :show="show"></Search>
         <v-card>
-          <v-card-title>
+          <v-card-title class="white--text">
             <h2>Bienvenido a PIoT</h2>
           </v-card-title>
         </v-card>
@@ -11,7 +12,7 @@
           <v-icon color="green">add_circle</v-icon>
           New project
         </v-btn>
-        <v-btn dark color="transparent" class="mt-10 ml-5">
+        <v-btn @click="show = true" dark color="transparent" class="mt-10 ml-5">
           Search project
           <v-icon color="green">search</v-icon>
         </v-btn>
@@ -21,8 +22,26 @@
 </template>
 
 <script>
+import Search from "./Search.vue";
+import router from "../router";
 export default {
   name: "Home",
+  data() {
+    return {
+      show: false,
+    };
+  },
+  methods: {
+    Close(e) {
+      console.log(e);
+      this.show = false;
+      if (e) {
+        router.push({ name: "Projects" });
+      }
+    },
+  },
+
+  components: { Search },
 };
 </script>
 
