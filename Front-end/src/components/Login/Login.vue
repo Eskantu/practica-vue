@@ -8,6 +8,7 @@
         <v-card-text>
           <v-form v-model="valid">
             <v-text-field
+              :disabled="_loading"
               :rules="userRules"
               v-model="credenciales.username"
               prepend-icon="person"
@@ -15,6 +16,7 @@
               type="text"
             ></v-text-field>
             <v-text-field
+              :disabled="_loading"
               :rules="passwordRules"
               v-model="credenciales.password"
               prepend-icon="lock"
@@ -27,7 +29,8 @@
           <v-spacer></v-spacer>
           <v-btn
             :disabled="!valid"
-            @click="ObtenerUsuario(credenciales)"
+            :loading="_loading"
+            @click="Login(credenciales)"
             color="success"
             >Login</v-btn
           >
@@ -51,9 +54,25 @@ export default {
       passwordRules: [(v) => !!v || "la contraseña es requerida"],
     };
   },
-  computed: { ...mapState("LoginStore", ["credenciales"]) },
+  computed: {
+    ...mapState("LoginStore", ["credenciales", "cargando"]),
+    _loading: {
+      get() {
+        return this.cargando;
+      },
+      set(value) {
+        this.setLoading(value);
+      },
+    },
+  },
   methods: {
-    ...mapActions("LoginStore", ["ObtenerUsuario"]),
+    ...mapActions("LoginStore", ["ObtenerUsuario", "setLoading"]),
+    Login(credenciales) {
+      this._loading = true;
+      setTimeout(() => {
+        this.ObtenerUsuario(credenciales);
+      }, 6000);
+    },
   },
 };
 </script>

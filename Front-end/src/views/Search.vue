@@ -12,7 +12,17 @@
           :loading="search"
           single-line
           placeholder="Ingrese el nombre del proyecto"
-        ></v-text-field>
+        >
+          <!-- <template v-slot:progress>
+            <row>
+              <div>Buscando {{ busqueda }}</div>
+              <v-progress-linear
+                :indeterminate="true"
+                color="blue"
+              ></v-progress-linear>
+            </row>
+          </template> -->
+        </v-text-field>
       </v-card-title>
     </v-card>
   </v-dialog>

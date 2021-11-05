@@ -49,8 +49,9 @@
               :headers="headers"
               :items="userList"
               :search="_Search"
+              :loading="_cargando"
               class="elevation-1"
-              loading-text="Loading... Please wait"
+              loading-text="Cargando... por favor espere"
               :footer-props="{
                 'items-per-page': 5,
                 'items-per-page-text': 'Registros por pagina',
@@ -58,6 +59,13 @@
                 'show-current-page': true,
               }"
             >
+              <!-- <template v-slot:loading>
+                <v-progress-linear
+                  indeterminate
+                  color="green"
+                ></v-progress-linear>
+                <div>Cargando...</div>
+              </template> -->
               <template v-slot:item.isActive="{ item }">
                 <tr>
                   <td>
@@ -100,19 +108,30 @@ export default {
     };
   },
   created() {
-    this.ObtenerUsuarios();
+    this._cargando = true;
+    setTimeout(() => {
+      this.ObtenerUsuarios();
+    }, 6000);
   },
   methods: {
-    ...mapActions("UserStore", ["ObtenerUsuarios", "SetSearch"]),
+    ...mapActions("UserStore", ["ObtenerUsuarios", "SetSearch", "SetLoading"]),
   },
   computed: {
-    ...mapState("UserStore", ["headers", "userList", "search"]),
+    ...mapState("UserStore", ["headers", "userList", "search", "cargando"]),
     _Search: {
       get() {
         return this.search;
       },
       set(_Search) {
         this.SetSearch(_Search);
+      },
+    },
+    _cargando: {
+      get() {
+        return this.cargando;
+      },
+      set(_cargando) {
+        this.SetLoading(_cargando);
       },
     },
     DisabledButtonEditDelete() {

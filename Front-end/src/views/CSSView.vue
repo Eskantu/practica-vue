@@ -23,6 +23,7 @@ export default {
         {
           title: "Projects",
           view: "Proyectos",
+          
         },
       ],
     };
