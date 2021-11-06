@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mike</title>
+	</head>
+	<body>
+		<div class="container">
+			<div class="horn"></div>
+			<div class="horn right"></div>
+			<div class="head"></div>
+
+			<div class="face">
+				<div class="eye">
+					<div class="iris"></div>
+				</div>
+				<div class="mouth"></div>
+			</div>
+
+			<div class="hand"></div>
+			<div class="hand right"></div>
+
+			<div class="leg">
+				<div class="nail"></div>
+				<div class="nail one"></div>
+				<div class="nail two"></div>
+			</div>
+			<div class="leg two">
+				<div class="nail"></div>
+				<div class="nail one"></div>
+				<div class="nail two"></div>
+			</div>
+		</div>
+	</body>
+</html>
+
+<style>
+	:root {
+		--green: #aed137;
+	}
+	body {
+		background: #00b8ab;
+	}
+	.container {
+		position: absolute;
+		margin: auto;
+		top: 0px;
+		left: 0px;
+		bottom: 0px;
+		right: 0px;
+		width: 200px;
+		height: 200px;
+	}
+	.horn {
+		background: #d8e0cd;
+		position: absolute;
+		width: 20px;
+		height: 30px;
+		top: 3px;
+		left: 28px;
+		border-radius: 30% 240% 100% 100%;
+	}
+	.horn.right {
+		border-radius: 240% 30% 100% 100%;
+		left: 100px;
+	}
+	.head {
+		position: absolute;
+		width: 150px;
+		height: 150px;
+		background: #aed137;
+		border-radius: 50%;
+	}
+	.head::before {
+		content: "";
+		position: absolute;
+		top: 20px;
+		left: 33px;
+		background: var(--green);
+		width: 120px;
+		height: 120px;
+		border-radius: 50%;
+	}
+	.head:after {
+		content: "";
+		position: absolute;
+		top: 20px;
+		left: -2px;
+		background: var(--green);
+		width: 120px;
+		height: 120px;
+		border-radius: 100%;
+	}
+	.eye {
+		z-index: 2;
+		position: absolute;
+		top: 24px;
+		left: 33px;
+		background: white;
+		width: 80px;
+		height: 80px;
+		border-radius: 50%;
+	}
+	.iris {
+		position: absolute;
+		top: 9px;
+		left: 9px;
+		width: 60px;
+		height: 60px;
+		background: #199e6c;
+		border-radius: 50%;
+	}
+	.iris::before {
+		content: "";
+		position: absolute;
+		left: 45px;
+		width: 0;
+		height: 0;
+		border-top: 10px solid transparent;
+		border-left: 20px solid #fff;
+		border-bottom: 10px solid transparent;
+	}
+	.mouth {
+		position: absolute;
+		top: 100px;
+		left: 60px;
+		width: 30px;
+		height: 30px;
+		background: #176a46;
+		border-radius: 100%;
+	}
+	.mouth:after {
+		z-index: 0;
+		content: "";
+		position: absolute;
+		top: -10px;
+		background: var(--green);
+		width: 30px;
+		height: 30px;
+	}
+	.hand {
+		position: absolute;
+		top: 20px;
+		left: -10px;
+		width: 20px;
+		height: 100px;
+		background: var(--green);
+		border-radius: 10px;
+		/* transform: rotate(140deg) translateY(30px); */
+		transform: rotate(140deg);
+	}
+	.hand.right {
+		transform: rotate(40deg);
+		left: 140px;
+	}
+	.leg {
+		position: absolute;
+		top: 140px;
+		left: 43px;
+		width: 20px;
+		height: 60px;
+		background: var(--green);
+	}
+	.leg:before {
+		content: "";
+		position: absolute;
+		top: 50px;
+		left: -5px;
+		width: 30px;
+		height: 20px;
+		background: var(--green);
+		border-radius: 200% 200% 100% 100%;
+	}
+	.nail {
+		position: absolute;
+		top: 64px;
+		width: 5px;
+		height: 5px;
+		background: #fff;
+		border-radius: 10px;
+	}
+	.nail.one {
+		left: 8px;
+	}
+	.nail.two {
+		left: 16px;
+	}
+	.leg.two {
+		left: 85px;
+	}
+</style>

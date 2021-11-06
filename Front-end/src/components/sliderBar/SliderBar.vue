@@ -7,7 +7,7 @@
         </v-list-item-avatar>
       </v-list-item>
       <v-list-item>
-        <v-list-item-content>
+        <v-list-item-content class="ocular">
           <v-list-item-title class="text-h6">Mario Escalante</v-list-item-title>
           <v-list-item-subtitle>
             616868d3b7f15db2aa28a48f
@@ -63,6 +63,7 @@ export default {
         { title: "Users", icon: "account_circle", to: "Users" },
         { title: "Projects", icon: "folder", to: "Projects" },
         { title: "About", icon: "help", to: "About" },
+        { title: "Draw CSS", icon: "format_paint", to: "CSS" },
       ],
     };
   },
@@ -75,3 +76,50 @@ export default {
 };
 </script>
 
+
+<style lang="scss" scoped>
+.v-navigation-drawer:hover {
+  .ocular {
+    opacity: 1;
+    // transform: rotate(0deg);
+    animation-name: in;
+    animation-duration: 0.5s;
+    transition-timing-function: ease-in;
+    transition-delay: 300ms;
+  }
+}
+.v-navigation-drawer {
+  .ocular {
+    opacity: 0;
+    // transform: rotate(90deg);
+    // transition: opacity, transform 0.5s;
+    transition-timing-function: ease-out;
+    transition-delay: 300ms;
+    animation-name: out;
+    animation-duration: 0.5s;
+    animation-fill-mode: forwards;
+  }
+}
+
+@keyframes in {
+  from {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes out {
+  from {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+  to {
+    opacity: 0;
+    transform: rotate(90deg);
+  }
+}
+</style>

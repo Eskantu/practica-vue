@@ -4,6 +4,7 @@ import axios from 'axios'
 const store = {
     namespaced: true,
     state: {
+        cargando: false,
         credenciales: { username: 'superUser', password: 'qwerty123' }
     },
     mutations: {
@@ -20,6 +21,12 @@ const store = {
                 console.log(e)
                 StorePrincipal.commit("SnackStore/SetSnack", "Credenciales incorrectas")
             })
+
+        },
+        setLoading({ state }, value) {
+            console.log("setLoading", state.cargando);
+            state.cargando = value
+            console.log("setLoading", state.cargando);
         }
     }
 }

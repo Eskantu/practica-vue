@@ -13,7 +13,6 @@
             md="8"
             class="elevation-3"
           >
-            <v-card-title> </v-card-title>
             <v-card-text>
               <v-form>
                 <v-text-field
@@ -57,6 +56,7 @@
                     </v-chip>
                   </template>
                 </v-combobox>
+<<<<<<< HEAD
                 <v-spacer></v-spacer>
                 <v-btn
                   block
@@ -67,6 +67,23 @@
                   color="teal"
                   >Create</v-btn
                 >
+=======
+                <v-row>
+                  <v-spacer></v-spacer>
+                  <v-btn :disabled="loading" class="mt-4" color="error"
+                    >Cancelar</v-btn
+                  >
+                  <v-btn
+                    class="ma-4"
+                    :disabled="loading"
+                    :loading="loading"
+                    @click="loading = true"
+                    dark
+                    color="green"
+                    >Create</v-btn
+                  >
+                </v-row>
+>>>>>>> 46cccd26ab56bfed853249c41bc447e475285d71
               </v-form>
             </v-card-text>
           </v-card>
