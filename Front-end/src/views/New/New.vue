@@ -11,7 +11,7 @@
             id="v-card-form"
             offset-md="2"
             md="8"
-            class="text-md-center elevatiom-3"
+            class="elevation-3"
           >
             <v-card-title> </v-card-title>
             <v-card-text>
@@ -57,13 +57,14 @@
                     </v-chip>
                   </template>
                 </v-combobox>
+                <v-spacer></v-spacer>
                 <v-btn
+                  block
                   :disabled="loading"
                   :loading="loading"
                   @click="loading = true"
                   dark
-                  block
-                  color="green"
+                  color="teal"
                   >Create</v-btn
                 >
               </v-form>
