@@ -56,18 +56,6 @@
                     </v-chip>
                   </template>
                 </v-combobox>
-<<<<<<< HEAD
-                <v-spacer></v-spacer>
-                <v-btn
-                  block
-                  :disabled="loading"
-                  :loading="loading"
-                  @click="loading = true"
-                  dark
-                  color="teal"
-                  >Create</v-btn
-                >
-=======
                 <v-row>
                   <v-spacer></v-spacer>
                   <v-btn :disabled="loading" class="mt-4" color="error"
@@ -83,7 +71,6 @@
                     >Create</v-btn
                   >
                 </v-row>
->>>>>>> 46cccd26ab56bfed853249c41bc447e475285d71
               </v-form>
             </v-card-text>
           </v-card>
