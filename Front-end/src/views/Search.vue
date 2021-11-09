@@ -13,15 +13,6 @@
           single-line
           placeholder="Ingrese el nombre del proyecto"
         >
-          <!-- <template v-slot:progress>
-            <row>
-              <div>Buscando {{ busqueda }}</div>
-              <v-progress-linear
-                :indeterminate="true"
-                color="blue"
-              ></v-progress-linear>
-            </row>
-          </template> -->
         </v-text-field>
       </v-card-title>
     </v-card>

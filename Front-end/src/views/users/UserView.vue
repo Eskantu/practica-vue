@@ -66,7 +66,7 @@
                 ></v-progress-linear>
                 <div>Cargando...</div>
               </template> -->
-              <template v-slot:item.isActive="{ item }">
+              <template v-slot:[`item.isActive`]="{ item }">
                 <tr>
                   <td>
                     <v-icon v-if="item.isActive" color="success">done </v-icon>
@@ -74,7 +74,7 @@
                   </td>
                 </tr>
               </template>
-              <template v-slot:item.username="{ item }">
+              <template v-slot:[`item.username`]="{ item }">
                 <tr>
                   <td>
                     {{ item.username }} <br />
@@ -84,7 +84,7 @@
                   </td>
                 </tr>
               </template>
-              <template v-slot:item.created="{ item }">
+              <template v-slot:[`item.created`]="{ item }">
                 <tr>
                   <td>
                     {{ item.created | formatDate }}
