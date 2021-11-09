@@ -69,7 +69,7 @@
               <template v-slot:[`item.isActive`]="{ item }">
                 <tr>
                   <td>
-                    <v-icon v-if="item.isActive" color="success">done </v-icon>
+                    <v-icon v-if="item.isActive" color="success">done</v-icon>
                     <v-icon v-else color="error">close</v-icon>
                   </td>
                 </tr>
