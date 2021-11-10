@@ -1,0 +1,194 @@
+$red: #a52a2e;
+$seaweed: #22382f;
+$roe: #ef767a;
+$wasabi: #74af82;
+$tamago: #e1ce7a;
+$greentea: #9dc49f;
+
+body {
+	background: #f5f5f5;
+}
+.container,
+.board,
+.maki,
+.sushi,
+.wasabi,
+.chopstick,
+.greentea,
+.soysauce {
+	position: absolute;
+}
+
+.container {
+	margin: auto;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	width: 350px;
+	height: 350px;
+}
+
+.board {
+	width: 300px;
+	height: 200px;
+	background: #cbad8c;
+	border-radius: 8px;
+	box-shadow: 12px 8px 0 rgba($color: #000000, $alpha: 0.1);
+}
+
+.maki {
+	top: 15px;
+	div {
+		margin: 5px 10px;
+		width: 30px;
+		height: 30px;
+		background: #fff;
+		border-radius: 100%;
+		border: 3px solid $seaweed;
+		background-image: radial-gradient(
+			#ef767a 0,
+			#ef767a 40%,
+			#fff 45%,
+			#fff 80%
+		);
+	}
+	div:nth-child(3),
+	div:nth-child(4) {
+		border: 3px solid $roe;
+		background-image: radial-gradient(
+			$tamago 0%,
+			$tamago 38%,
+			$seaweed 40%,
+			#fff 45%,
+			#fff 80%
+		);
+	}
+}
+.maki.right {
+	left: 40px;
+}
+
+.sushi {
+	top: 40px;
+	width: 25px;
+	height: 50px;
+	background: white;
+	left: 100px;
+	border-radius: 6px;
+	&::before,
+	&::after {
+		position: absolute;
+		content: "";
+	}
+	&::before {
+		top: -5px;
+		left: 2px;
+		width: 20px;
+		height: 60px;
+		background: #f45b69;
+		border-radius: 6px;
+		background-image: linear-gradient(rgba(white, 0.3) 10%, #f45b69 10%);
+		background-size: 10px 10px;
+	}
+}
+
+.sushi.two {
+	left: 140px;
+	&::before {
+		background: #dfbe99;
+		background-image: linear-gradient(rgba(#f45b69, 0.4) 10%, #dfbe99 10%);
+		background-size: 10px 10px;
+	}
+}
+.sushi.three {
+	top: 110px;
+	&::before {
+		background: #e1ce7a;
+		background-image: linear-gradient($seaweed 10%, #e1ce7a 10%);
+		background-position: 50px 25px;
+		background-size: 60px 60px;
+	}
+}
+
+.sushi.four {
+	top: 110px;
+	left: 140px;
+	background: white;
+	&:before {
+		background-image: linear-gradient(rgba(white, 0.3) 10%, #f7845d 10%);
+	}
+}
+
+.wasabi,
+.soysauce {
+	width: 30px;
+	height: 28px;
+	background: $wasabi;
+	top: 90px;
+	left: 190px;
+	border: 4px solid #fff;
+	box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.2);
+	&::before,
+	&::after {
+		position: absolute;
+		content: "";
+		background: #f5f5f5;
+		border-radius: 100px;
+		left: 22px;
+		opacity: 0.4;
+	}
+	&::before {
+		width: 3px;
+		height: 13px;
+		top: 4px;
+	}
+	&::after {
+		width: 4px;
+		height: 4px;
+		top: 19px;
+	}
+}
+.soysauce {
+	position: absolute;
+	top: 140px;
+	left: 190px;
+	background: #846267;
+}
+
+.chopstick {
+	top: 80px;
+	left: 250px;
+	div {
+		position: absolute;
+		width: 3px;
+		border-bottom: 100px solid #fdd692;
+		border-left: 1px solid transparent;
+		border-right: 1px solid transparent;
+		box-shadow: 3px 2px rgba($color: #000000, $alpha: 0.2);
+	}
+	div:nth-child(2) {
+		left: 10px;
+	}
+}
+.rest {
+	position: absolute;
+	top: 96px;
+	left: 245px;
+	width: 25px;
+	height: 10px;
+	background: #fff;
+}
+
+.greentea {
+	width: 45px;
+	height: 45px;
+	border-radius: 100%;
+	background: #a6ccaf;
+	border: 3px solid white;
+	left: 205px;
+	top: 18px;
+	background: radial-gradient(#8fb391 20%, $greentea 46%, $greentea 50%);
+	box-shadow: inset 10px 4px 0 rgba($color: #000000, $alpha: 0.1),
+		5px 5px rgba($color: #000000, $alpha: 0.2);
+}
