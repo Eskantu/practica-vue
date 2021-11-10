@@ -13,6 +13,7 @@ router.post('/user', async (request, response) => {
         const userDB = await User.create(body)
         return response.json(userDB)
     } catch (error) {
+        console.log(error)
         return response.status(500).json({ mensaje: "Ocurrio un error", error })
     }
 })

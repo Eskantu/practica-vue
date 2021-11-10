@@ -1,6 +1,6 @@
 import StorePrincipal from '../../store'
 import router from "../../router";
-import axios from 'axios'
+import auth from '../../auth/auth'
 const store = {
     namespaced: true,
     state: {
@@ -12,10 +12,12 @@ const store = {
     },
     actions: {
         ObtenerUsuario(credenciales) {
-            axios.post("user/buscar", credenciales.state.credenciales).then(res => {
+            auth.Login(credenciales).then(res => {
                 StorePrincipal.commit("setUserProfile", res.data)
                 StorePrincipal.commit("SnackStore/SetSnack", "Login correcto")
-                console.log(res)
+                // console.log(res.data)
+                auth.setUserLogged(res.data)
+                this.cargando = false
                 router.push({ name: 'Home' })
             }).catch(e => {
                 console.log(e)

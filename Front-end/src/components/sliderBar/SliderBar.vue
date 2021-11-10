@@ -8,9 +8,9 @@
       </v-list-item>
       <v-list-item>
         <v-list-item-content class="ocular">
-          <v-list-item-title class="text-h6">Mario Escalante</v-list-item-title>
+          <v-list-item-title class="text-h6">{{ user }}</v-list-item-title>
           <v-list-item-subtitle>
-            616868d3b7f15db2aa28a48f
+            {{ user }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -54,6 +54,7 @@
 </template>
 <script>
 import router from "../../router/index";
+import auth from "../../auth/auth";
 export default {
   name: "SliderBar",
   data() {
@@ -67,8 +68,14 @@ export default {
       ],
     };
   },
+  computed: {
+    user() {
+      return this.$store.state.user;
+    },
+  },
   methods: {
     Salir() {
+      auth.deleteUserLogged();
       this.$store.state.user = null;
       router.push({ name: "Login" });
     },
