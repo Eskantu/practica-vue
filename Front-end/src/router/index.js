@@ -1,6 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-
+import StorePrincipal from '../store/index'
 Vue.use(VueRouter);
 
 const routes = [
@@ -9,14 +9,14 @@ const routes = [
     name: "Home",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/Home.vue"),
-    // meta: { requiresAuth: true }
+    meta: { requiresAuth: true }
   },
   {
     path: "/New",
     name: "New",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/New/New.vue"),
-    // meta: { requiresAuth: true }
+    meta: { requiresAuth: true }
   },
   {
     path: "/Login",
@@ -39,24 +39,35 @@ const routes = [
       import(
         /* webpackChunkName: "registro" */ "../components/Project/Project.vue"
       ),
+    meta: { requiresAuth: true }
   },
   {
     path: "/about",
     name: "About",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/users",
     name: "Users",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/users/UserView.vue"),
+    meta: { requiresAuth: true }
   },
   {
     path: "/CSS",
     name: "CSS",
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/CSSView.vue"),
+    meta: { requiresAuth: true }
+  },
+  {
+    path: "/FILE",
+    name: "FILE",
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/uploadFile/uploadFile.vue"),
+    meta: { requiresAuth: true }
   },
 ];
 
@@ -66,9 +77,12 @@ const router = new VueRouter({
   routes,
 });
 
-// router.beforeEach((to, from, next) => {
-//   const rutaAuth = to.matched.some(record => record.meta.requiresAuth)
-
-// })
+router.beforeEach((to, from, next) => {
+  const rutaAuth = to.matched.some(record => record.meta.requiresAuth)
+  if (rutaAuth === true && StorePrincipal.state.user === null) {
+    next({ name: 'Login' })
+  }
+  else { next() }
+})
 
 export default router;

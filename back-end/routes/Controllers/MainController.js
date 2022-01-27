@@ -1,6 +1,8 @@
 import express, { request, response } from 'express'
 import Nota from '../../Models/Nota'
 import User from '../../Models/user'
+import * as fs from 'fs';
+import * as path from 'path';
 const router = express.Router();
 
 
@@ -156,6 +158,54 @@ router.put("/nota/:id", async (request, response) => {
         })
     }
 })
+
+router.post("/upload", async (request, response) => {
+    try {
+        if (!request.files) {
+            return response.status(400).send('No files were uploaded.');
+        }
+        else {
+            let data=[];
+            request.files.file.forEach(async (file) => {
+                let avatar = file;
+                avatar.mv(`./public/files/${avatar.name}`);
+                data.push({
+                    name: avatar.name,
+                    type: avatar.mimetype,
+                    size: avatar.size
+                });
+            })
+            return response.json({
+                mensaje: 'Archivo subido', data: data
+            })
+        }
+    } catch (error) {
+        console.log(error)
+        return response.status(500).json({
+            mensaje: 'Ocurrio un error', error
+        })
+    }
+})
+
+router.get("/getFiles", async (request, response) => {
+    let dir='./public/files/'
+    var files = fs.readdirSync(dir);
+    var filesZise = [];
+    for (var i = 0; i < files.length; i++) {
+        var stats = fs.statSync(dir + files[i]);
+        var size = stats["size"];
+        filesZise.push({
+            name: files[i],
+            type: files[i].split('.').pop(),
+            size: size
+        });
+    
+     }
+    console.log(filesZise)
+    return response.json(filesZise);
+}
+)
+
 
 //#endregion
 module.exports = router

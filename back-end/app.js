@@ -3,6 +3,7 @@ import Express from "express";
 import morgan from 'morgan'
 import cors from 'cors'
 import path from 'path'
+import fileUpload from 'express-fileupload'
 import history from 'connect-history-api-fallback'
 import mongose from 'mongoose'
 
@@ -11,6 +12,9 @@ import mongose from 'mongoose'
 //#region Configurations
 const CONNECTION_URL = "mongodb+srv://node:bhu4TqCBwnW5tHjP@cluster0.ltn1g.mongodb.net/api_Node?retryWrites=true&w=majority";
 var app = Express();
+app.use(fileUpload({
+  createParentPath: true
+}));
 app.use(morgan('tiny'))
 app.use(cors())
 app.use(Express.json())

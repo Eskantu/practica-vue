@@ -1,16 +1,18 @@
 <template>
   <v-navigation-drawer class="elevation-3" permanent expand-on-hover dark app>
     <v-list>
-      <v-list-item class="px-2">
-        <v-list-item-avatar>
-          <v-img src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
+      <v-list-item  class="px-2">
+        <v-list-item-avatar >
+          <v-img  src="https://randomuser.me/api/portraits/men/85.jpg"></v-img>
         </v-list-item-avatar>
       </v-list-item>
       <v-list-item>
         <v-list-item-content class="ocular">
-          <v-list-item-title class="text-h6">{{ user }}</v-list-item-title>
+          <v-list-item-title class="text-h6">{{
+            user.username
+          }}</v-list-item-title>
           <v-list-item-subtitle>
-            {{ user }}
+            {{ user._id }}
           </v-list-item-subtitle>
         </v-list-item-content>
       </v-list-item>
@@ -63,8 +65,9 @@ export default {
         { title: "Dashboard", icon: "dashboard", to: "/" },
         { title: "Users", icon: "account_circle", to: "Users" },
         { title: "Projects", icon: "folder", to: "Projects" },
-        { title: "About", icon: "help", to: "About" },
         { title: "Draw CSS", icon: "format_paint", to: "CSS" },
+        { title: "Upload file", icon: "file_upload", to: "FILE" },
+        { title: "About", icon: "help", to: "About" },
       ],
     };
   },

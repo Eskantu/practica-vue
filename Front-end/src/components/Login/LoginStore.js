@@ -15,7 +15,7 @@ const store = {
             auth.Login(credenciales).then(res => {
                 StorePrincipal.commit("setUserProfile", res.data)
                 StorePrincipal.commit("SnackStore/SetSnack", "Login correcto")
-                // console.log(res.data)
+                console.log(res.data)
                 auth.setUserLogged(res.data)
                 this.cargando = false
                 router.push({ name: 'Home' })

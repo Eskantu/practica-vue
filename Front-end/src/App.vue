@@ -15,22 +15,17 @@
 
 <script>
 import Snackbar from "./components/Snackbar/Snackbar.vue";
-import StorePrincipal from "./store/index";
+// import StorePrincipal from "./store/index";
 import NavigationBar from "./components/sliderBar/SliderBar.vue";
-import auth from "./auth/auth";
 export default {
   name: "App",
   components: { Snackbar, NavigationBar },
   data() {
-    return {
-      show: true,
-      text: "hola",
-    };
+    return {};
   },
   computed: {
     user: function () {
-      StorePrincipal.commit("setUserProfile", auth.getUserLogged());
-      return auth.getUserLogged() != null;
+      return this.$store.state.user != null;
     },
   },
 };
