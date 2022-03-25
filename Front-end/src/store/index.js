@@ -10,7 +10,7 @@ import UploadStore from '../views/uploadFile/UploadStore'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 Vue.use(Vuex)
-axios.defaults.baseURL = "http://localhost:5000/api/";
+axios.defaults.baseURL = "https://app-mevn-eskantu.herokuapp.com/api/";
 Vue.use(VueAxios, axios)
 export default new Vuex.Store({
   state: {

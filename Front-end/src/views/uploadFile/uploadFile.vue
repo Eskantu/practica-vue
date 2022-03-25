@@ -61,7 +61,7 @@ import { mapActions, mapState } from 'vuex';
           ></v-data-table>
         </v-card-text>
         <v-card-actions>
-          <v-btn color="green" width="100%" @click="upload(fileNotUploaded)"
+          <v-btn color="green" :loading="isUploading" dark width="100%" @click="upload(fileNotUploaded)"
             >Subir</v-btn
           >
         </v-card-actions>
@@ -85,6 +85,7 @@ export default {
       fileNotUploaded: state => state.UploadStore.fileNotUploaded,
       headers: state => state.UploadStore.headers,
       fileSelect: state => state.UploadStore.fileSelect,
+      isUploading: state => state.UploadStore.isUploading,
     })
   },
   methods: {

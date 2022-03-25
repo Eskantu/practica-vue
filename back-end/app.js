@@ -23,7 +23,7 @@ app.use(Express.urlencoded({ extended: true }))
 app.use(Express.static(path.join(__dirname, 'public')))
 app.use('/api', require('./routes/Controllers/MainController'))
 app.use(history())
-app.set('puerto', process.env.PORT || 5000)
+app.set('puerto', process.env.PORT || 5001)
 app.listen(app.get('puerto'));
 mongose.connect(CONNECTION_URL);
 mongose.connection.on('connected', () => console.log('Connected to ', app.get('puerto')));
